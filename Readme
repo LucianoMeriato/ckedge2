@@ -1,0 +1,36 @@
+Ck2 -Edge Computing e Computer Systems
+
+README
+
+Monitoramento com sensor de umidade e temperatura e luz
+
+Este projeto utiliza um Arduino para monitorar as condições ambientais, incluindo temperatura, umidade e luminosidade. O sistema também possui um display LCD para exibir as condições atuais e um buzzer para alertar quando as condições saem dos limites definidos.
+
+Componentes
+
+Arduino
+Sensor de temperatura (conectado ao pino A1)
+Sensor de umidade (conectado ao pino A2)
+Sensor de luminosidade (conectado ao pino A0)
+Display LCD (conectado aos pinos 12, 11, 10, 5, 4, 3, 2)
+Buzzer (conectado ao pino 9)
+LEDs vermelho (pino 8), amarelo (pino 7) e verde (pino 6)
+
+Funcionamento
+
+O sistema lê continuamente os valores dos sensores de temperatura, umidade e luminosidade. Dependendo das leituras, ele acende um dos LEDs e exibe uma mensagem no display LCD:
+
+LED Vermelho: Acende quando a umidade está muito alta (>70%) ou muito baixa (<50%), ou quando a luminosidade é muito alta (LDR > 900). Também aciona o buzzer.
+LED Amarelo: Acende quando a temperatura está muito alta (>15°C) ou muito baixa (<10°C), ou quando a luminosidade está em um nível médio (600 < LDR < 900). Também aciona o buzzer.
+LED Verde: Acende quando todas as condições estão dentro dos limites aceitáveis (10°C < temperatura < 15°C, 50% < umidade < 70%, LDR < 600). Neste caso, o buzzer não é acionado.
+
+Este código é um sistema de monitoramento de ambiente que utiliza um Arduino para ler dados de sensores de temperatura, umidade e luminosidade. Ele também controla um display LCD e um buzzer para fornecer feedback ao usuário
+
+Inclusão da biblioteca e inicialização do LCD: A biblioteca LiquidCrystal.h é incluída para controlar o display LCD. O objeto lcd é inicializado com os pinos do Arduino conectados ao display.
+Definição de pinos e variáveis: Os pinos para o buzzer e LEDs são definidos. Além disso, as variáveis para armazenar os valores lidos dos sensores de temperatura e umidade são declaradas.
+Configuração inicial (setup): A comunicação serial é iniciada e o LCD é configurado para exibir 2 linhas de 16 caracteres cada. Os pinos para o buzzer e LEDs são configurados como saída.
+Loop principal (loop): Este é o coração do programa, onde os sensores são lidos e as ações correspondentes são tomadas.
+Leitura da umidade: O valor do sensor de umidade é lido e mapeado para uma escala de 0 a 100.
+Leitura da luminosidade: O valor do sensor de luminosidade (LDR) é lido. Dependendo do valor lido, diferentes LEDs são acesos e mensagens correspondentes são exibidas no LCD.
+Leitura da temperatura: O valor do sensor de temperatura é lido e convertido para graus Celsius. Dependendo do valor da temperatura, diferentes LEDs são acesos e mensagens correspondentes são exibidas no LCD.
+Verificação das condições do ambiente: Se todas as condições (temperatura, umidade e luminosidade) estiverem dentro dos limites definidos, o LED verde é aceso e uma mensagem de “Tudo em ordem!” é exibida no LCD.
